@@ -9,7 +9,7 @@ public class CalculatorMSTests
 
     [TestMethod]
     public void AddNumbers_InputTwoInt_GetCorrectAddition()
-    {
+    {   
       //- Arrange
       Calculator calc = new();
       
