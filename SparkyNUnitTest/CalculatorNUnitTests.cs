@@ -48,4 +48,20 @@ public class CalculatorNUnitTests
         Assert.IsTrue(result);
         Assert.That(result , Is.EqualTo(true));
     }
+
+
+    [Test]
+    [TestCase(10, ExpectedResult = false)]
+    [TestCase(11, ExpectedResult = true)]
+    public bool IsOddNumber_InputNumber_ReturnTrueIfOdd(int a)
+    {
+        //- Arrange
+        var calc = new Calculator();
+        
+        //- Act & Assert
+        return calc.IsOddNumber(a);   
+    }
+
+
+
 }
