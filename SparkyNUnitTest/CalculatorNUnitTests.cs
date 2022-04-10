@@ -61,7 +61,22 @@ public class CalculatorNUnitTests
         //- Act & Assert
         return calc.IsOddNumber(a);   
     }
-
-
+    
+    
+    [Test]
+    [TestCase(5.4 , 10.5)]     //15.9
+    [TestCase(5.43 , 10.53)]  //15.96
+    [TestCase(5.49 , 10.59)] //16.08
+    public void AddNumbersDoubles_InputTwoDoubles_GetCorrectAddition(double a , double b)
+    {
+        //- Arrange
+        var calc = new Calculator();
+        
+        //- Act
+        var result = calc.AddNumbersDouble(a,b);
+        
+        //- Assert
+        Assert.AreEqual(15.9 , result , 1); // Between {14.9 - 16.9}
+    }
 
 }
