@@ -5,11 +5,18 @@ namespace Sparky;
 [TestFixture]
 public class CustomerNUnitTests
 {
+    private Customer customer;
+    [SetUp]
+    public void Setup()
+    {
+        customer = new Customer();
+    }
+    
     [Test]
     public void GreetAndCombineNames_InputFirsNameAndLastName_ReturnFullName()
     {
         //- Arrange
-        var customer = new Customer();
+        // var customer = new Customer();
         
         //- Act
         var fullName = customer.GreetAndCombineNames("Karim" , "Moustamid" );
@@ -28,7 +35,7 @@ public class CustomerNUnitTests
     public void GreetMessage_NotGreeted_ReturnNull()
     {
         //- Arrange
-        var customer = new Customer();
+        // var customer = new Customer();
         
         //-Assert
         Assert.IsNull(customer.GreetMessage);
