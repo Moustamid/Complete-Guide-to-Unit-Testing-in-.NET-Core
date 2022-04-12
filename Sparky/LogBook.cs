@@ -15,6 +15,8 @@ namespace Sparky
         bool LogBalanceAfterWithdrawal(int balanceAfterWithdrawal);
         
         string MessageWithReturnStr(string message);
+        
+        bool LogWithOutputResult(string str, out string outputStr);
     }
     
     //-Classes : 
@@ -47,6 +49,13 @@ namespace Sparky
             Console.WriteLine(message);
             return message.ToLower();
         }
+
+        public bool LogWithOutputResult(string str, out string outputStr)
+        {
+            outputStr = "Hello " + str;
+            return true;
+        }
+
     }
     
  
