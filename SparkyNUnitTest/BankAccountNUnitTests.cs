@@ -84,6 +84,20 @@ public class BankAccountNUnitTests
         Assert.That(result, Is.EqualTo(desiredOutput));
     }
 
+    [Test]
+    public void BankLogDummy_LogRefChecker_ReturnTrue()
+    {
+        var logMock = new Mock<ILogBook>();
+        Customer customer = new();
+        Customer customerNotUsed = new();
 
+
+        logMock.Setup(u => u.LogWithRefObj(ref customer)).Returns(true);
+
+
+        Assert.IsFalse(logMock.Object.LogWithRefObj(ref customerNotUsed));
+        Assert.IsTrue(logMock.Object.LogWithRefObj(ref customer));
+
+    }
 
 }
