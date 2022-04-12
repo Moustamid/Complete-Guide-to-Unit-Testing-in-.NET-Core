@@ -1,18 +1,27 @@
-﻿using NUnit.Framework;
+﻿using System.Collections.Generic;
+using NUnit.Framework;
 
 namespace Sparky;
 
 [TestFixture]
 public class CalculatorNUnitTests
 {
+    private Calculator calculator;
+    
+    [SetUp]
+    public void SetUp()
+    {
+        calculator = new Calculator();
+    }
+
     [Test]
     public void AddNumbers_InputTwoInt_GetCorrectAddition()
     {   
         //- Arrange
-        Calculator calc = new();
+
       
         //- Act
-        var result = calc.AddNumbers(10,20);
+        var result = calculator.AddNumbers(10,20);
       
         //- Assert
         Assert.AreEqual(30 , result);
@@ -22,10 +31,10 @@ public class CalculatorNUnitTests
     public void IsOddNumber_InputEvenNumber_ReturnFalse()
     {
         //- Arrange
-        Calculator calc = new();
+
         
         //- Act
-        var isOdd = calc.IsOddNumber(10);
+        var isOdd = calculator.IsOddNumber(10);
 
         //- Assert
         Assert.IsFalse(isOdd);
@@ -39,10 +48,10 @@ public class CalculatorNUnitTests
     public void IsOddNumber_InputOddNumber_ReturnTrue(int a)
     {
         //- Arrange
-        var calc = new Calculator();
+
         
         //- Act
-        var result = calc.IsOddNumber(a);
+        var result = calculator.IsOddNumber(a);
         
         //- Assert
         Assert.IsTrue(result);
@@ -70,13 +79,35 @@ public class CalculatorNUnitTests
     public void AddNumbersDoubles_InputTwoDoubles_GetCorrectAddition(double a , double b)
     {
         //- Arrange
-        var calc = new Calculator();
-        
+
         //- Act
-        var result = calc.AddNumbersDouble(a,b);
+        var result = calculator.AddNumbersDouble(a,b);
         
         //- Assert
         Assert.AreEqual(15.9 , result , 1); // Between {14.9 - 16.9}
     }
+
+    [Test]
+    public void GetOddRange_InputMinAndMaxRange_ReturnValidOddNumberRangeList()
+    {
+        //- Arrange
+        List<int> expectedOddRange = new() { 5 ,7 ,9 };
+        
+        //- Act
+        var result = calculator.GetOddRnage(5, 10);
+        
+        //- Assert
+        Assert.That(result , Is.EquivalentTo(expectedOddRange));
+        Assert.AreEqual(expectedOddRange , result);
+        Assert.Contains(7,result);
+        Assert.That(result , Does.Contain(7));
+        Assert.That(result , Is.Not.Empty);
+        Assert.That(result.Count , Is.EqualTo(3));
+        Assert.That(result , Has.No.Member(6));
+        Assert.That(result , Is.Ordered);
+        // Assert.That(result , Is.Ordered.Descending);
+        Assert.That(result , Is.Unique);
+    }
+
 
 }
