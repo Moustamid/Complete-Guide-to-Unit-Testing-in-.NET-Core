@@ -13,15 +13,7 @@ public class BankAccountNUnitTests
     {
         
     }
-
-    [Test]
-    public void BankDepositLogFakker_Add100_ReturnTrue()
-    {  
-        var bankAccount = new BankAccount(new LogFakker());
-        var result =bankAccount.Deposit(100);
-        Assert.That(result, Is.True);
-        Assert.That(bankAccount.balance, Is.EqualTo(100));
-    }
+    
     
     [Test]
     public void BankDeposit_Add100_ReturnTrue()

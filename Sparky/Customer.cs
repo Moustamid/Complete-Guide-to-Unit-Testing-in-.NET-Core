@@ -1,11 +1,18 @@
 ﻿namespace Sparky;
 
+
 public class Customer
 {
     public int OrderTotal { get; set; }
     public string GreetMessage { get; set; }
     public int discount { get; set; } = 15;
     
+    public bool IsPlatinum { get; set; }
+
+    public Customer()
+    {
+        IsPlatinum = false;
+    }
     public string GreetAndCombineNames(string firsName , string lastName)
     {
         if (string.IsNullOrWhiteSpace(firsName))
