@@ -23,7 +23,19 @@ public class CustomerNUnitTests
         Assert.That(customer.GreetMessage , Does.EndWith("Moustamid"));
         Assert.That(customer.GreetMessage , Does.Match("Hello , [A-Z{1}][a-z]+ [A-Z{1}][a-z]+"));
     }
-    
-    
-    
+
+    [Test]
+    public void GreetMessage_NotGreeted_ReturnNull()
+    {
+        //- Arrange
+        var customer = new Customer();
+        
+        //-Assert
+        Assert.IsNull(customer.GreetMessage);
+
+    }
+
+
+
+
 }
