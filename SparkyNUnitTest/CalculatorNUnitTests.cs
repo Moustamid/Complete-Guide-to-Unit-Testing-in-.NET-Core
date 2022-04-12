@@ -96,7 +96,7 @@ public class CalculatorNUnitTests
         //- Act
         var result = calculator.GetOddRnage(5, 10);
         
-        //- Assert
+        //- Assert 
         Assert.That(result , Is.EquivalentTo(expectedOddRange));
         Assert.AreEqual(expectedOddRange , result);
         Assert.Contains(7,result);
