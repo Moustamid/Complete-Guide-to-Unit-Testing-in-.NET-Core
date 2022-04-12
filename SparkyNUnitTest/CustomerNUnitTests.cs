@@ -1,4 +1,5 @@
-﻿using NUnit.Framework;
+﻿using System;
+using NUnit.Framework;
 
 namespace Sparky;
 
@@ -52,8 +53,39 @@ public class CustomerNUnitTests
         var result = customer.discount;
         Assert.That(result , Is.InRange(10,25));
     }
+    
+    
+    [Test]
+    public void GreetMessage_GreetedWithoutLastName()
+    {
+        customer.GreetAndCombineNames("Karim", "");
+        
+        Assert.IsNotNull(customer.GreetMessage);
+        Assert.IsFalse(string.IsNullOrEmpty(customer.GreetMessage));
 
+    }
+    
+    [Test]
+    public void GreetMessage_EmptyFirstName_ThrowsException()
+    {
+        var exceptionDetails = Assert.Throws<ArgumentException>(() =>
+            customer.GreetAndCombineNames("" , "Moustamid"));
+        
+        Assert.AreEqual("Empty firsName", exceptionDetails.Message);
+        
+        Assert.That(() => customer.GreetAndCombineNames("" , "Moustamid") 
+            , Throws.ArgumentException.With.Message.EqualTo("Empty firsName"));
+        
+        
+        //. Exception without message 
+        Assert.Throws<ArgumentException>(() =>
+            customer.GreetAndCombineNames("" , "Moustamid"));
 
+        Assert.That(() => customer.GreetAndCombineNames("" , "Moustamid") 
+            , Throws.ArgumentException);
+    }
+    
+    
 
 
 }
