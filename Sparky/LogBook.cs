@@ -13,6 +13,8 @@ namespace Sparky
         bool LogToDb(string message);
         
         bool LogBalanceAfterWithdrawal(int balanceAfterWithdrawal);
+        
+        string MessageWithReturnStr(string message);
     }
     
     //-Classes : 
@@ -38,6 +40,12 @@ namespace Sparky
             }
             Console.WriteLine("failure");
             return false;
+        }
+
+        public string MessageWithReturnStr(string message)
+        {
+            Console.WriteLine(message);
+            return message.ToLower();
         }
     }
     
